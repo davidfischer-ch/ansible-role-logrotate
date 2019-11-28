@@ -14,6 +14,7 @@
     mode: 0644
   become: yes
   tags: config
+  when: lograte_config_file|length > 0
 
 - name: Setup the log rotations
   template:
