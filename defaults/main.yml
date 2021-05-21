@@ -1,3 +1,11 @@
+logrotate_dynamic_defaults:
+
+  ubuntu-20.04:
+    logrotate_group: adm
+
+  linux:
+    logrotate_group: syslog
+
 logrotate_packages:
   - logrotate
 

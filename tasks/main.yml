@@ -1,6 +1,12 @@
 # Install and configure logrotate
 ---
 
+- dynamic_defaults:
+    hostvars: '{{ hostvars[inventory_hostname] }}'
+    defaults: '{{ logrotate_dynamic_defaults }}'
+    must_match: yes
+  tags: [logrotate, always]
+
 - block:
     - import_tasks: facts.yml
     - import_tasks: '{{ logrotate_role_action }}.yml'

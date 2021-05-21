@@ -2,9 +2,9 @@
 # rotate log files weekly
 {{ logrotate_log_rotations_frequency }}
 
-# use the syslog group by default, since this is the owning group
+# use the {{ logrotate_group }} group by default, since this is the owning group
 # of /var/log/syslog.
-su root syslog
+su root {{ logrotate_group }}
 
 # keep 4 weeks worth of backlogs
 rotate {{ logrotate_log_rotations_max_count|int }}
