@@ -11,7 +11,7 @@
   template:
     src: '{{ lograte_config_file }}'
     dest: /etc/logrotate.conf
-    mode: 0644
+    mode: '644'
   become: yes
   tags: config
   when: lograte_config_file|length > 0
@@ -20,7 +20,7 @@
   template:
     src: '{{ item.config_file }}'
     dest: /etc/logrotate.d/{{ item.name }}
-    mode: 0644
+    mode: '644'
     validate: 'logrotate --debug %s'
   become: yes
   loop: '{{ logrotate_log_rotations }}'
