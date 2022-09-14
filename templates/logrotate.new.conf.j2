@@ -1,0 +1,29 @@
+# see "man logrotate" for details
+
+# global options do not affect preceding include directives
+
+# rotate log files weekly
+{{ logrotate_log_rotations_frequency }}
+
+# use the {{ logrotate_group }} group by default, since this is the owning group
+# of /var/log/syslog.
+su root {{ logrotate_group }}
+
+# keep 4 weeks worth of backlogs
+rotate {{ logrotate_log_rotations_max_count|int }}
+
+# create new (empty) log files after rotating old ones
+create
+
+# use date as a suffix of the rotated file
+#dateext
+
+# uncomment this if you want your log files compressed
+#compress
+
+{{ logrotate_extra_config }}
+
+# packages drop log rotation information into this directory
+include /etc/logrotate.d
+
+# system-specific logs may also be configured here.

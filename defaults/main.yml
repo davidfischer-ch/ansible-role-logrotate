@@ -1,15 +1,20 @@
 logrotate_dynamic_defaults:
 
-  ubuntu-20.04:
+  ubuntu-20.*:
+    lograte_config_file: logrotate.old.conf.j2
+    logrotate_group: adm
+
+  ubuntu-22.*:
+    lograte_config_file: logrotate.new.conf.j2
     logrotate_group: adm
 
   linux:
+    lograte_config_file: logrotate.new.conf.j2
     logrotate_group: syslog
 
 logrotate_packages:
   - logrotate
 
-lograte_config_file: logrotate.conf.j2
 logrotate_extra_config: ''
 logrotate_log_rotations_frequency: weekly
 logrotate_log_rotations_max_count: 4
